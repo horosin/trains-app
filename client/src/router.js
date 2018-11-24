@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
-import Assess from './views/Assess.vue'
+import Search from './views/Search.vue'
+import Inside from './views/Inside.vue'
 
 Vue.use(Router)
 
@@ -13,9 +14,14 @@ export default new Router({
       component: Home
     },
     {
-      path: '/assess',
-      name: 'assess',
-      component: Assess
+      path: '/search',
+      name: 'search',
+      component: Search
+    },
+    {
+      path: '/inside',
+      name: 'inside',
+      component: Inside
     },
     {
       path: '/about',

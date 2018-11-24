@@ -37,7 +37,7 @@
       <v-toolbar-title>PKP Podróżuj</v-toolbar-title>
     </v-toolbar>
     <v-content>
-      <v-container fluid>
+      <v-container fluid fill-height>
         <v-layout
           justify-center
         >

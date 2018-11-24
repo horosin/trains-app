@@ -16,23 +16,29 @@
         </v-card-text>
       </v-card>
     </v-flex>
+    <bottom-nav></bottom-nav>
   </v-layout>
 </template>
 
 <script>
+import BottomNav from '../components/bottom-nav.vue'
 
-  export default {
-    data: () => ({
-      valid: false,
-      password: '',
-      email: '',
-      ticket: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+/.test(v) || 'E-mail must be valid'
-      ]
-    })
+
+export default {
+  data: () => ({
+    valid: false,
+    password: '',
+    email: '',
+    ticket: '',
+    emailRules: [
+      v => !!v || 'E-mail is required',
+      v => /.+@.+/.test(v) || 'E-mail must be valid'
+    ]
+  }),
+  components: {
+    BottomNav
   }
+}
 </script>
 
 <style>

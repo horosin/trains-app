@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Search from './views/Search.vue'
 import Inside from './views/Inside.vue'
+import InsideDash from './views/InsideDash.vue'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/inside',
       name: 'inside',
       component: Inside
+    },
+    {
+      path: '/inside/dash',
+      name: 'inside-dash',
+      component: InsideDash
     },
     {
       path: '/about',

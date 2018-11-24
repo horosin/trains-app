@@ -46,13 +46,15 @@
     </v-flex>
 
     <v-flex xs12 sm6 offset-sm3 mb-3>
-      <v-btn to='found-connectinos' color="accent" block>Wyszukaj połączenie</v-btn>
+      <v-btn to='/found-connections' color="accent" block>Wyszukaj połączenie</v-btn>
     </v-flex>
 
 
     <v-flex xs12 sm6 offset-sm3 mb-3>
     <v-divider></v-divider>
-      <v-btn block color="secondary" to="/inside">Mam bilet</v-btn>
+      <v-btn block color="secondary" to="/inside" class="align-bottom">
+        Mam bilet
+      </v-btn>
     </v-flex>
     <v-flex xs12 sm6 offset-sm3 mb-3>
       <v-btn block color="secondary" to="/login">Zaloguj się</v-btn>

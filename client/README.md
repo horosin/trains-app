@@ -1,4 +1,4 @@
-# Investment Assistant Client Application
+# PKP Vagabond Client Application
 
 ## Project setup
 ```

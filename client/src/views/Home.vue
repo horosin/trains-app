@@ -1,21 +1,56 @@
 <template>
   <v-layout row wrap>
-    <funds></funds>
-    <search_settings></search_settings>
-    <suggestions></suggestions>
+    <v-flex xs12 sm6 offset-sm3 mb-3>
+      <v-select
+        v-model="departureSelect"
+        :items="stations"
+        :error-messages="selectErrors"
+        label="Stacja początkowa"
+        required
+        outline
+        @change="$v.select.$touch()"
+        @blur="$v.select.$touch()"
+    ></v-select>
+      <v-select
+        v-model="destinationSelect"
+        :items="stations"
+        :error-messages="selectErrors"
+        label="Stacja końcowa"
+        required
+        outline
+        @change="$v.select.$touch()"
+        @blur="$v.select.$touch()"
+    ></v-select>
+    <v-date-picker v-model="picker" :landscape="landscape" :reactive="reactive"></v-date-picker>
+    </v-flex>
+    <v-flex xs12 sm6 offset-sm3 mb-3>
+      <v-btn block color="secondary" to="/inside">Mam bilet</v-btn>
+    </v-flex>
+    <v-flex xs12 sm6 offset-sm3 mb-3>
+      <v-btn block color="secondary" to="/login">Zaloguj się</v-btn>
+    </v-flex>
   </v-layout>
 </template>
 
 <script>
-  import funds from '../components/funds'
-  import suggestions from '../components/suggestions'
-  import search_settings from '../components/search_settings'
 
   export default {
     components: {
-      funds,
-      suggestions,
-      search_settings
+    },
+    data: () => ({
+      stations: ['Kraków Główny','Opoczno Południe','Łódź Kaliska','Warszawa Centralna'],
+      departureSelect: '',
+      destinationSelect: '',
+      selectErrors: []
+    }),
+    computed: {
+      destinationStations: function () {
+        return this.stations.filter(station => station !== this.departureSelect)
+      }
     }
   }
 </script>
+
+<style>
+  .basic-input { border-radius: 2px; }
+</style>

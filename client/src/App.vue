@@ -11,30 +11,30 @@
             <v-icon>assessment</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Home</v-list-tile-title>
+            <v-list-tile-title>Start</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile to="/assess">
+        <v-list-tile to="/search">
           <v-list-tile-action>
             <v-icon>report_problem</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Oceń inwestycje</v-list-tile-title>
+            <v-list-tile-title>Wyszukaj połączenie</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile to="/about">
+        <v-list-tile to="/inside">
           <v-list-tile-action>
             <v-icon>info</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>O aplikacji</v-list-tile-title>
+            <v-list-tile-title>Mam bilet</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar color="indigo" dark fixed app>
+    <v-toolbar color="primary" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Investment Assistant</v-toolbar-title>
+      <v-toolbar-title>PKP Podróżuj</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container fluid>

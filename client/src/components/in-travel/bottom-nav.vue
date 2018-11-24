@@ -27,6 +27,15 @@
     <v-btn
       color="teal"
       flat
+      value="movies"
+    >
+      <span>Filmy</span>
+      <v-icon>local_movies</v-icon>
+    </v-btn>
+
+    <v-btn
+      color="teal"
+      flat
       value="pomoc"
     >
       <span>Pomoc</span>

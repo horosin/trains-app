@@ -53,4 +53,7 @@
 
 <style>
   .basic-input { border-radius: 2px; }
+  .layout {
+    padding-bottom: 30px;
+  }
 </style>

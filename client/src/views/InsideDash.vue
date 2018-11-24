@@ -24,6 +24,10 @@
     </v-flex>
     <wars v-if="current === 'wars'"></wars>
     <trasa v-if="current === 'trasa'"></trasa>
+    <v-flex v-if="current === 'trasa'">
+      <v-subheader>Zobacz tez</v-subheader>
+      <v-btn color="accent" block @click="go('wars')">Zobacz ofertę WARS! >></v-btn>
+    </v-flex>
     <pomoc v-if="current === 'pomoc'"></pomoc>
     <bottom-nav v-on:bottom-menu-change="menuChanged"></bottom-nav>
   </v-layout>
@@ -60,6 +64,9 @@ export default {
   methods: {
     menuChanged (current) {
       this.current = current
+    },
+    go (target) {
+      this.current = target
     }
   }
 }

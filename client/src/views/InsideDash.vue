@@ -1,31 +1,45 @@
 <template>
   <v-layout row wrap>
     <v-flex xs12>
-      <v-subheader>Informacje o trasie</v-subheader>
+      <v-subheader>Godzina przyjazdu</v-subheader>
       <v-card>
-        <v-card-text>
-          [basic info]
-        </v-card-text>
+        <v-card-title primary-title>
+          <div style="width: 100%">
+            <span class="display-3">18:05</span>
+          </div>
+        </v-card-title>
+        <v-card-actions>
+          <div><strong>5:00</strong> minut opóźnienia.</div>
+          <v-spacer></v-spacer>
+          <v-btn icon @click="show = !show">
+            <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
+          </v-btn>
+        </v-card-actions>
+        <v-slide-y-transition>
+          <v-card-text v-show="show">
+            <timeline></timeline>
+          </v-card-text>
+        </v-slide-y-transition>
       </v-card>
     </v-flex>
-    <v-flex xs12>
-      <v-subheader>Zamów z WARS!</v-subheader>
-      <v-card>
-        <v-card-text>
-          [moah]
-        </v-card-text>
-      </v-card>
-    </v-flex>
-    <bottom-nav></bottom-nav>
+    <wars v-if="current === 'wars'"></wars>
+    <trasa v-if="current === 'trasa'"></trasa>
+    <pomoc v-if="current === 'pomoc'"></pomoc>
+    <bottom-nav v-on:bottom-menu-change="menuChanged"></bottom-nav>
   </v-layout>
 </template>
 
 <script>
-import BottomNav from '../components/bottom-nav.vue'
+import BottomNav from '../components/in-travel/bottom-nav.vue'
 
+import wars from '../components/in-travel/wars.vue'
+import trasa from '../components/in-travel/trasa.vue'
+import pomoc from '../components/in-travel/pomoc.vue'
+import timeline from '../components/in-travel/timeline.vue'
 
 export default {
   data: () => ({
+    show: false,
     valid: false,
     password: '',
     email: '',
@@ -33,10 +47,20 @@ export default {
     emailRules: [
       v => !!v || 'E-mail is required',
       v => /.+@.+/.test(v) || 'E-mail must be valid'
-    ]
+    ],
+    current: "trasa"
   }),
   components: {
-    BottomNav
+    BottomNav,
+    wars,
+    trasa,
+    pomoc,
+    timeline
+  },
+  methods: {
+    menuChanged (current) {
+      this.current = current
+    }
   }
 }
 </script>

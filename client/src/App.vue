@@ -8,15 +8,7 @@
       <v-list dense>
         <v-list-tile to="/">
           <v-list-tile-action>
-            <v-icon>assessment</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Start</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <v-list-tile to="/search">
-          <v-list-tile-action>
-            <v-icon>report_problem</v-icon>
+            <v-icon>search</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title>Wyszukaj połączenie</v-list-tile-title>
@@ -24,10 +16,18 @@
         </v-list-tile>
         <v-list-tile to="/inside">
           <v-list-tile-action>
+            <v-icon>directions_railway</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>W trasie</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+                <v-list-tile to="/info">
+          <v-list-tile-action>
             <v-icon>info</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>Mam bilet</v-list-tile-title>
+            <v-list-tile-title>Informacje</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -37,7 +37,7 @@
       <v-toolbar-title>PKP Podróżuj</v-toolbar-title>
     </v-toolbar>
     <v-content>
-      <v-container fluid>
+      <v-container>
         <v-layout
           justify-center
         >

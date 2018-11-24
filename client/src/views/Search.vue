@@ -1,7 +1,5 @@
 <template>
   <v-layout row wrap>
-    <deposits></deposits>
-    <suggestions></suggestions>
   </v-layout>
 </template>
 

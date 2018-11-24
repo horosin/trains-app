@@ -1,55 +1,75 @@
 <template>
-  <div id="app">
-    <v-app id="inspire">
-      <v-toolbar dark color="primary">
-        <v-toolbar-title><router-link style="color:white; text-decoration:none;" :to="{name: 'index'}">PKP</router-link></v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-toolbar-items>
-          <v-btn v-if="$store.state.isUserLoggedIn" flat to="/">Main</v-btn>
-          <v-btn v-if="!$store.state.isUserLoggedIn" flat to="/login">Log in</v-btn>
-          <v-btn
-            v-if="$store.state.isUserLoggedIn"
-            flat
-            dark
-            @click="logout">
-            Log Out
-          </v-btn>
-        </v-toolbar-items>
-      </v-toolbar>
-      <v-content>
-        <v-container>
+  <v-app id="inspire">
+    <v-navigation-drawer
+      v-model="drawer"
+      fixed
+      app
+    >
+      <v-list dense>
+        <v-list-tile to="/">
+          <v-list-tile-action>
+            <v-icon>assessment</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Home</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile to="/assess">
+          <v-list-tile-action>
+            <v-icon>report_problem</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>Oceń inwestycje</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile to="/about">
+          <v-list-tile-action>
+            <v-icon>info</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>O aplikacji</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+    </v-navigation-drawer>
+    <v-toolbar color="indigo" dark fixed app>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-title>Investment Assistant</v-toolbar-title>
+    </v-toolbar>
+    <v-content>
+      <v-container fluid>
+        <v-layout
+          justify-center
+        >
           <router-view></router-view>
-        </v-container>
-      </v-content>
-      <v-footer></v-footer>
-    </v-app>
-  </div>
+        </v-layout>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
-
 <script>
-import AppMenu from '@/components/AppMenu';
 
 export default {
   name: 'App',
   components: {
-    AppMenu
+  },
+  data: () => ({
+    drawer: null
+  }),
+  props: {
+    source: String
+  },
+  mounted: function () {
+    // banking.userInfo()
   },
   methods: {
-    logout () {
-      this.$store.dispatch('setToken', null)
-      this.$store.dispatch('setUser', null)
-      this.$router.push({
-        name: 'LoginPage'
-      })
-    }
+
   }
 }
 </script>
 
 <style>
-
-.container {
-  max-width: 1200px;
+.app-copy {
+  padding-left: 10px;
 }
-
 </style>

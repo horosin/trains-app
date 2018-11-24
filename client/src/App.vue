@@ -34,7 +34,7 @@
     </v-navigation-drawer>
     <v-toolbar color="primary" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-      <v-toolbar-title>Investment Assistant</v-toolbar-title>
+      <v-toolbar-title>PKP Podróżuj</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container fluid>

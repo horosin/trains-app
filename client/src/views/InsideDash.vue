@@ -28,6 +28,7 @@
       <v-subheader>Zobacz tez</v-subheader>
       <v-btn color="accent" block @click="go('wars')">Zobacz ofertę WARS! >></v-btn>
     </v-flex>
+    <media v-if="current === 'media'"></media>
     <pomoc v-if="current === 'pomoc'"></pomoc>
     <bottom-nav v-on:bottom-menu-change="menuChanged"></bottom-nav>
   </v-layout>
@@ -40,6 +41,7 @@ import wars from '../components/in-travel/wars.vue'
 import trasa from '../components/in-travel/trasa.vue'
 import pomoc from '../components/in-travel/pomoc.vue'
 import timeline from '../components/in-travel/timeline.vue'
+import media from '../components/in-travel/media.vue'
 
 export default {
   data: () => ({
@@ -59,7 +61,8 @@ export default {
     wars,
     trasa,
     pomoc,
-    timeline
+    timeline,
+    media
   },
   methods: {
     menuChanged (current) {

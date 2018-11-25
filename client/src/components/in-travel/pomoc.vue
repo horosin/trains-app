@@ -1,6 +1,6 @@
 <template>
   <v-flex xs12>
-    <v-subheader>Zamów z WARS!</v-subheader>
+    <v-subheader>Masz jakieś pytania lub uwagi?</v-subheader>
     <v-card>
       <v-card-text>
         [moah]

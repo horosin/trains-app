@@ -1,6 +1,6 @@
 <template>
   <v-layout row wrap>
-    <v-subheader>Nasza oferta</v-subheader>
+    <v-subheader>Polecane filmy</v-subheader>
     <v-flex xs12 v-for="(item,i) in items" :key="i">
       <v-card>
         <v-img
@@ -22,7 +22,7 @@
           </div>
         </v-card-title>
         <v-card-actions>
-          <v-btn flat color="orange">Zamów</v-btn>
+          <v-btn flat color="orange">Obejrzyj</v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>
@@ -34,19 +34,19 @@ export default {
   data: () => ({
     items: [
       {
-        name: 'Kanapka z szynką',
-        img: 'https://www.theblaze.com/wp-content/uploads/2018/01/sandwich.jpg',
-        note: 'Klasyka w dobrym wydaniu.',
+        name: 'Ekspres polarny ',
+        img: 'https://www.portsmouthnh.com/wp-content/uploads/2015/12/the-polar-express-820x445.jpg',
+        note: 'Przygodowy',
       },
       {
-        name: 'Kajzerka z indykiem',
-        img: 'img/food/kanapka.jpg',
-        note: 'Wyśmienity wybór na śniadanie!',
+        name: 'Dziewczyna z pociągu ',
+        img: 'https://cdn.natemat.pl/ec3e7ad20c54677806d20830d617c5e3,780,0,0,0.jpg',
+        note: 'Sensacyjny',
       },
       {
-        name: 'Smażony Camambert',
-        img: 'https://144f2a3a2f948f23fc61-ca525f0a2beaec3e91ca498facd51f15.ssl.cf3.rackcdn.com/uploads/food_portal_data/recipes/recipe/hero_article_image/1554/letterbox_resizeimage593x426xnXdgilhT5j.jpg',
-        note: 'Śniadanie dla smakoszy.',
+        name: 'Pociąg do Darjeeling',
+        img: 'https://d13ezvd6yrslxm.cloudfront.net/wp/wp-content/images/the-darjeeling-limited-5-700x291.jpg',
+        note: 'Komedia, Dramat',
       },
     ]
   })

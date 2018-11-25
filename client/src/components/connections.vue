@@ -1,6 +1,6 @@
 <template>
   <v-layout row wrap>
-  <v-icon style="position: fixed; left: 46%; top: 100px">keyboard_arrow_right</v-icon>
+  <v-icon class="right-arrow-alignment">keyboard_arrow_right</v-icon>
   <v-flex xs6 sm6 offset-sm3>
     <p class="text-xs-center display-1">{{departureStation}}</p>
   </v-flex>
@@ -25,30 +25,35 @@
         <div slot="header">
           <v-layout>
             <v-flex xs12>
-              <p class="text-xs-left title" color="accent">{{connection.name}}</p>
+              <p class="text-xs-left title">{{connection.name}}</p>
             </v-flex>
           </v-layout>
 
           <v-layout>
-            <v-flex xs12>
-              <p class="text-xs-left" color="accent">{{connection.departureTime}} - {{connection.arrivalTime}}</p>
+            <v-flex xs5>
+              <p class="text-xs-left subheading">{{connection.departureTime}} - {{connection.arrivalTime}}</p>
             </v-flex>
-          </v-layout>
 
-          <v-layout>
             <v-flex xs1>
-                <v-icon color="accent">av_timer</v-icon>
+                <v-icon color="primary" class="duration-icon">av_timer</v-icon>
             </v-flex>
             <v-flex xs3>
-              <p 
-              color="accent">{{connection.tripDuration}}</p>
+              <p class="subheading">{{connection.tripDuration}}</p>
             </v-flex>
           </v-layout>
         </div>
 
+        <div class="accent-divider"></div>
         <v-card>
-          <v-card-text class="subheading">Klasa 1: <strong>{{connection.firstClassPrice}}.00 PLN</strong></v-card-text>
-          <v-card-text class="subheading">Klasa 2: <strong>{{connection.secondClassPrice}}.00 PLN</strong></v-card-text>
+          <v-card-text class="subheading">
+            <div class="price-alignment">Klasa 1: <strong>{{connection.firstClassPrice}}.00 PLN</strong></div>
+            <div class="price-alignment">Klasa 2: <strong>{{connection.secondClassPrice}}.00 PLN</strong></div>
+          </v-card-text><br>
+          <v-card-actions>
+            <v-btn to='/buy-ticket' color="accent" large block>Kup bilet</v-btn>
+          </v-card-actions>
+          <v-card-text class="body-2">Stacje pośrednie</strong></v-card-text>
+
           <timeline></timeline>
         </v-card>
       </v-expansion-panel-content>
@@ -124,5 +129,26 @@ v-card-title {
 
 .deposit-text {
   line-height: 36px;
+}
+
+.right-arrow-alignment {
+  position: absolute; 
+  left: 46%;
+  top: 45px
+}
+
+.duration-icon {
+  position: relative; 
+  bottom: 1px;
+}
+
+.price-alignment {
+  float: left;
+  margin-right: 15px;
+}
+
+.accent-divider {
+  height: 1px;
+background-image: radial-gradient(#FF5F19 5%, white 95%);
 }
 </style>

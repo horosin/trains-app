@@ -26,7 +26,7 @@ trains = [
         'id': "IC0002",
         'name': "TLK 13101 Malinowski",
         'start': "Kraków Główny",
-        'stations': ['Częstochowa', 'Warszawa Centralna'],
+        'stations': ['Częstochowa', 'Warszawa Zachodnia'],
         'stop': 'Warszawa Centralna',
         'start_time': datetime.strptime('12:21', '%H:%M'),
         'stations_time': [datetime.strptime('15:20', '%H:%M'), datetime.strptime('16:50', '%H:%M')],

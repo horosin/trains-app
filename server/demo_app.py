@@ -5,6 +5,7 @@ from datetime import datetime
 from trains_dict import trains
 from wars_dict import wars
 from media_dict import media
+from places_dict import places
 
 app = Flask(__name__)
 CORS(app)
@@ -67,6 +68,11 @@ def get_all_wars():
 @app.route('/trains-app/api/v1.0/media', methods=['GET'])
 def get_all_media():
     return jsonify({'media': media})
+
+@app.route('/trains-app/api/v1.0/places', methods=['GET'])
+def get_free_places():
+    free_places = [place for place in places if place['is_available']]
+    return jsonify({'free_places': free_places})
 
 @app.errorhandler(404)
 def not_found(error):

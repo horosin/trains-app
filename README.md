@@ -1,6 +1,6 @@
-# PKP APP
+# PKP Travel!
 
-Application helping travelers during their journeys.
+Application helping travelers to start and experience their journeys. From buying the ticket to watching movies and ordering food on-board.
 
 [still a template - WIP]
 
@@ -10,63 +10,33 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+- node >= 8
+- python 3
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
+Install the client
 ```
-Give the example
+cd client && npm install
 ```
 
-And repeat
-
+Install the backend
 ```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+cd server && pip install -r requirements.txt
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
+### Running
 ```
-Give an example
+cd client && npm run serve
+cd server && python3 demo_app.py
 ```
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
 * [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
@@ -81,6 +51,5 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Developed during HackYeah hackathon.
+* Thanks to PKP Intercity for the hackathon challenge.

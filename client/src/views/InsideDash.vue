@@ -28,12 +28,12 @@
           <div><strong>5:00</strong> minut opóźnienia.</div>
           <v-spacer></v-spacer>
           <v-btn icon @click="show = !show">
-            <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
+            <v-icon>{{ show ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</v-icon>
           </v-btn>
         </v-card-actions>
         <v-slide-y-transition>
           <v-card-text v-show="show">
-            <timeline></timeline>
+            <timeline :stops="stops"></timeline>
           </v-card-text>
         </v-slide-y-transition>
       </v-card>
@@ -70,7 +70,21 @@ export default {
       v => !!v || 'E-mail is required',
       v => /.+@.+/.test(v) || 'E-mail must be valid'
     ],
-    current: "trasa"
+    current: "trasa",
+    stops: [
+      {
+        name: 'Kraków',
+        time: '16:00'
+      },
+      {
+        name: 'Włoszczowa',
+        time: '17:15'
+      },
+      {
+        name: 'Warszawa',
+        time: '18:05'
+      }
+    ]
   }),
   components: {
     BottomNav,

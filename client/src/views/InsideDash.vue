@@ -25,7 +25,7 @@
           </div>
         </v-card-title> -->
         <v-card-actions>
-          <div><strong>5:00</strong> minut opóźnienia.</div>
+          <div><strong style="color:red">Opóźnienie: 5 minut</strong></div>
           <v-spacer></v-spacer>
           <v-btn icon @click="show = !show">
             <v-icon>{{ show ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</v-icon>

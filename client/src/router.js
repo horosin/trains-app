@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Search from './views/Search.vue'
 import Inside from './views/Inside.vue'
 import InsideDash from './views/InsideDash.vue'
+import FoundConnections from './views/FoundConnections.vue'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/inside/dash',
       name: 'inside-dash',
       component: InsideDash
+    },
+    {
+      path: '/found-connections',
+      name: 'found-connections',
+      component: FoundConnections
     },
     {
       path: '/about',

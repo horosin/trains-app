@@ -1,38 +1,78 @@
 <template>
   <v-layout row wrap>
     <v-flex xs12>
-      <v-subheader>Informacje o trasie</v-subheader>
+      <v-subheader>Godzina przyjazdu</v-subheader>
       <v-card>
-        <v-card-text>
-          [basic info]
-        </v-card-text>
+        <v-card-title primary-title>
+          <div style="width: 100%">
+            <span class="display-3">18:05</span>
+          </div>
+        </v-card-title>
+        <v-card-actions>
+          <div><strong>5:00</strong> minut opóźnienia.</div>
+          <v-spacer></v-spacer>
+          <v-btn icon @click="show = !show">
+            <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
+          </v-btn>
+        </v-card-actions>
+        <v-slide-y-transition>
+          <v-card-text v-show="show">
+            <timeline></timeline>
+          </v-card-text>
+        </v-slide-y-transition>
       </v-card>
     </v-flex>
-    <v-flex xs12>
-      <v-subheader>Zamów z WARS!</v-subheader>
-      <v-card>
-        <v-card-text>
-          [moah]
-        </v-card-text>
-      </v-card>
+    <wars v-if="current === 'wars'"></wars>
+    <trasa v-if="current === 'trasa'"></trasa>
+    <v-flex v-if="current === 'trasa'">
+      <v-subheader>Zobacz tez</v-subheader>
+      <v-btn color="accent" block @click="go('wars')">Zobacz ofertę WARS! >></v-btn>
     </v-flex>
+    <media v-if="current === 'media'"></media>
+    <pomoc v-if="current === 'pomoc'"></pomoc>
+    <bottom-nav v-on:bottom-menu-change="menuChanged"></bottom-nav>
   </v-layout>
 </template>
 
 <script>
+import BottomNav from '../components/in-travel/bottom-nav.vue'
 
-  export default {
-    data: () => ({
-      valid: false,
-      password: '',
-      email: '',
-      ticket: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+/.test(v) || 'E-mail must be valid'
-      ]
-    })
+import wars from '../components/in-travel/wars.vue'
+import trasa from '../components/in-travel/trasa.vue'
+import pomoc from '../components/in-travel/pomoc.vue'
+import timeline from '../components/in-travel/timeline.vue'
+import media from '../components/in-travel/media.vue'
+
+export default {
+  data: () => ({
+    show: false,
+    valid: false,
+    password: '',
+    email: '',
+    ticket: '',
+    emailRules: [
+      v => !!v || 'E-mail is required',
+      v => /.+@.+/.test(v) || 'E-mail must be valid'
+    ],
+    current: "trasa"
+  }),
+  components: {
+    BottomNav,
+    wars,
+    trasa,
+    pomoc,
+    timeline,
+    media
+  },
+  methods: {
+    menuChanged (current) {
+      this.current = current
+    },
+    go (target) {
+      this.current = target
+    }
   }
+}
 </script>
 
 <style>

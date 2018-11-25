@@ -25,14 +25,18 @@
           </div>
         </v-card-title> -->
         <v-card-actions>
-          <div><strong>5:00</strong> minut opóźnienia.</div>
+          <div><strong style="color:red">Opóźnienie: 5 minut</strong></div>
           <v-spacer></v-spacer>
+          <span>Informacje</span>
           <v-btn icon @click="show = !show">
             <v-icon>{{ show ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</v-icon>
           </v-btn>
         </v-card-actions>
         <v-slide-y-transition>
           <v-card-text v-show="show">
+            <div class="subheading" style="margin-bottom: 8px;">Twoje miejsce: </div>
+            <strong style="margin-bottom: 15px;">Wagon 1, miejsce 35</strong>
+            <div class="subheading" style="margin: 8px 0;">Trasa: </div>
             <timeline :stops="stops"></timeline>
           </v-card-text>
         </v-slide-y-transition>

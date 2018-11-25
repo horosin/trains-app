@@ -8,7 +8,26 @@
 					>
 						<div slot="header">{{item.title}}</div>
 						<v-card>
-							<v-card-text>{{item.content}}</v-card-text>
+              <v-card-text v-if="item.map">
+                Wolne miejsca: 
+                <div style="width: 100%; overflow-x: scroll;"><img src="https://www.intercity.pl/pl/obrazy/lp/dart/schemat/Dart_pociag_01a.png" alt=""></div>
+                <v-toolbar color="transparent" class="elevation-0">
+                  <v-icon>keyboard_arrow_left</v-icon>
+                  <v-spacer></v-spacer>
+                  <v-icon>keyboard_arrow_right</v-icon>
+                </v-toolbar>
+                <v-divider></v-divider>
+                Wagon 1, miejsce 42
+                <v-divider></v-divider>
+                Wagon 1, miejsce 73
+                <v-divider></v-divider>
+                Wagon 1, miejsce 76
+                <v-divider></v-divider>
+              </v-card-text>
+							<v-card-text>
+                {{item.content}}
+                <v-btn v-if="item.button" block color="accent">{{item.button}}</v-btn>  
+              </v-card-text>
 						</v-card>
 					</v-expansion-panel-content>
 				</v-expansion-panel>
@@ -21,17 +40,18 @@ export default {
   data: () => ({
     items: [
       {
-        title: 'Gdzie znajdę konduktora?',
-        content: 'Odpowiedź'
+        title: 'Nie odpowiada mi przydzielone miejsce',
+        button: 'Zmień miejsce',
+        map: true
       },
       {
         title: 'Gdzie jest wagon WARS?',
-        content: 'Odpowiedź'
+        button: 'Zobacz plan pociągu'
       },
       {
-        title: 'Mam uciążliwych współoasażerów.',
-        content: 'Odpowiedź'
-      }
+        title: 'Opóźnienie pociagu powoduje komplikacje w dalszej podróży.',
+        button: 'Kontakt z konduktorem'
+      },
     ]
   })
 }

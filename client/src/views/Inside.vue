@@ -15,6 +15,7 @@
               v-model="password"
               label="Hasło"
               required
+              type=password
             ></v-text-field>
           </v-form>
         </v-card-text>

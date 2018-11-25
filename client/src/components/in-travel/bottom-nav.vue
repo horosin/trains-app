@@ -45,9 +45,9 @@
 
 <script>
   export default {
+    props: ['bottomNav'],
     data () {
       return {
-        bottomNav: 'trasa'
       }
     },
     methods: {

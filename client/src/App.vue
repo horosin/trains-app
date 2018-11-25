@@ -22,14 +22,6 @@
             <v-list-tile-title>W trasie</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-                <v-list-tile to="/info">
-          <v-list-tile-action>
-            <v-icon>info</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>Informacje</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar color="primary" dark fixed app>

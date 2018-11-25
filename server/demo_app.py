@@ -1,11 +1,13 @@
 #!flask/bin/python
 from flask import Flask, jsonify, abort, make_response, request
+from flask_cors import CORS
 from datetime import datetime
 from trains_dict import trains
 from wars_dict import wars
 from media_dict import media
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/trains-app/api/v1.0/trains', methods=['GET'])
@@ -58,6 +60,14 @@ def get_train_query_string():
 
     return(jsonify({'train': train6}))
 
+@app.route('/trains-app/api/v1.0/wars', methods=['GET'])
+def get_all_wars():
+    return jsonify({'wars': wars})
+
+@app.route('/trains-app/api/v1.0/media', methods=['GET'])
+def get_all_media():
+    return jsonify({'media': media})
+
 @app.errorhandler(404)
 def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
@@ -70,5 +80,9 @@ if __name__ == '__main__':
 
 # scrap youtube videos
 # cors (enable communication)
-# datetime!!!!
 # wyszukiwanie stacji koncowej w stacjach posrednich
+
+
+#pip3
+#flask
+#flask_cors

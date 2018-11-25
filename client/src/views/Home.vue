@@ -12,8 +12,6 @@
         label="Stacja początkowa"
         required
         outline
-        @change="$v.select.$touch()"
-        @blur="$v.select.$touch()"
     ></v-select>
       <v-select
         v-model="destinationSelect"
@@ -22,8 +20,6 @@
         label="Stacja końcowa"
         required
         outline
-        @change="$v.select.$touch()"
-        @blur="$v.select.$touch()"
       ></v-select>
     </v-flex>
       
@@ -45,7 +41,7 @@
     </v-flex>
 
     <v-flex xs12 sm6 offset-sm3 mb-3>
-      <v-btn to='/found-connections' color="accent" block>Wyszukaj połączenie</v-btn>
+      <v-btn @click="findConnections()" color="accent" block>Wyszukaj połączenie</v-btn>
     </v-flex>
 
     <v-flex xs12 sm6 offset-sm3 mb-3>
@@ -59,6 +55,8 @@
 </template>
 
 <script>
+  import trains from '../services/trains'
+  import router from '../router'
 
   export default {
     components: {
@@ -91,6 +89,10 @@
           this.showDatePicker = false;
         }
         this.showTimePicker = !this.showTimePicker;
+      },
+      async findConnections() {
+        await trains.setQueryParameters(this.departureSelect, this.destinationSelect, this.pickedTime);
+        await router.push('/found-connections');
       }
     }
   }

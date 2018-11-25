@@ -54,7 +54,7 @@
           </v-card-actions>
           <v-card-text class="body-2">Stacje pośrednie</strong></v-card-text>
 
-          <timeline></timeline>
+          <timeline :stops="connection.stationsWithTimes"></timeline>
         </v-card>
       </v-expansion-panel-content>
     </v-expansion-panel>
@@ -65,13 +65,14 @@
 
 <script>
   // import connection from './connections/connection'
+  import trains from '../services/trains'
   import timeline from './in-travel/timeline'
 
   export default {
     data: () => ({
       panel: [false, true, false],
       departureStation: 'Kraków Główny',
-      destinationStation: 'Opoczno Południe',
+      destinationStation: 'Warszawa Centralna',
       date: '25 sierpnia 2018',
       connections: [
         {
@@ -84,8 +85,7 @@
           date: '25/11',
           tripDuration: '3:38',
           firstClassPrice: '63',
-          secondClassPrice: '48',
-          time: 'asd'
+          secondClassPrice: '48'
         },
         { 
           name: 'TLK 13101 Malinowski',
@@ -97,22 +97,55 @@
           date: '25/11',
           tripDuration: '2:06',
           firstClassPrice: '98',
-          secondClassPrice: '74',
-          time: 'asdf'
-        },
-        {
-          name: 'Lokata mobilna',
-          time: '15:11'
-        },
-        {
-          name: 'Lokata urodzinowa',
-          time: '16:10'
-        }
+          secondClassPrice: '74'        }
       ]
     }),
+    mounted: function () {
+      trains.trainsQueryWithCachedData().then(response => {
+        const serverFormatConnections = response.data.train;
+        console.error('\n\n\nserverFormatConnections:', serverFormatConnections)
+        let clientFormatConnections = serverFormatConnections.map(connection => {
+          // let newConnection = Object.assign({}, connection);
+          let newConnection = {}
+          newConnection.name = connection.name;
+          newConnection.tripDuration = connection.duration;
+          newConnection.firstStation = connection.start;
+          newConnection.lastStation = connection.stop;
+          let depTime = new Date(connection.start_time);
+          newConnection.departureTime = `${depTime.getHours()}:${depTime.getMinutes()}`;
+          let arrTime = new Date(connection.stop_time);
+          newConnection.arrivalTime = `${arrTime.getHours()}:${arrTime.getMinutes()}`;
+
+          let stationsWithEnds = connection.stations;
+          stationsWithEnds.unshift(connection.start);
+          stationsWithEnds.push(connection.stop);
+          newConnection.stations = stationsWithEnds;
+
+          const stationsTimes = connection.stations_time.map(time => {
+            const newTime = new Date(time);
+
+            const minutes = newTime.getMinutes();
+            const stringMinutes = minutes > 9 ? minutes : '0' + minutes;
+            return `${newTime.getHours()}:${stringMinutes}`;
+          });
+          stationsTimes.unshift(newConnection.departureTime);
+          stationsTimes.push(newConnection.arrivalTime);
+
+          newConnection.stationsWithTimes = newConnection.stations.map( (station, index) => {
+            return { name: station, time: stationsTimes[index]}
+          })
+
+          newConnection.firstClassPrice = connection.price1;
+          newConnection.secondClassPrice = connection.price2;
+          return newConnection;
+          
+        });
+        this.connections = clientFormatConnections || [];
+      })
+    },
     components: {
       timeline
-    }
+    },
   }
 
 </script>

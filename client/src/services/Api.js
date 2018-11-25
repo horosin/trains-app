@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-export const invest = axios.create({
-  baseURL: `http://localhost:5000/`
+export const pkpServer = axios.create({
+  baseURL: `http://localhost:5000/trains-app/api/v1.0/`
 })
 
 export const banking = axios.create({

@@ -101,5 +101,9 @@
 </script>
 
 <style>
+  .basic-input { border-radius: 2px; }
+  .layout {
+    padding-bottom: 30px;
+  }
   .button-align { position: fixed; z-index: 1 }
 </style>

@@ -2,8 +2,7 @@
   <v-bottom-nav
     :active.sync="bottomNav"
     :value="true"
-    absolute
-    color="transparent"
+    fixed
     @update:active="changed"
   >
     <v-btn
@@ -22,6 +21,15 @@
     >
       <span>WARS</span>
       <v-icon>free_breakfast</v-icon>
+    </v-btn>
+
+    <v-btn
+      color="teal"
+      flat
+      value="media"
+    >
+      <span>Filmy</span>
+      <v-icon>local_movies</v-icon>
     </v-btn>
 
     <v-btn

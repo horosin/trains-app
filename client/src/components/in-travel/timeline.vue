@@ -4,7 +4,7 @@
     dense
   >
     <v-timeline-item
-      color="pink"
+      color="accent lighten-1"
       small
     >
       <v-layout pt-3>
@@ -18,7 +18,7 @@
     </v-timeline-item>
 
     <v-timeline-item
-      color="teal lighten-3"
+      color="primary lighten-2"
       small
     >
       <v-layout wrap pt-3>
@@ -32,7 +32,7 @@
     </v-timeline-item>
 
     <v-timeline-item
-      color="teal lighten-3"
+      color="primary lighten-2"
       small
     >
       <v-layout pt-3>

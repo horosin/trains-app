@@ -15,7 +15,6 @@ export default {
   },
   async getTrainsInfo() {
     const url = 'trains'
-    console.error(url)
     return await pkpServer.get(
       url,
       {
@@ -29,7 +28,6 @@ export default {
   },
   async trainsQuery(departureStation, destinationStation, startTime) {
     const url = `trains_query?start=${departureStation}&stop=${destinationStation}&start_time=${startTime}`
-    console.error(url)
     return await pkpServer.get(
       url,
       {

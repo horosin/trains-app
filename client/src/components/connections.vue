@@ -103,7 +103,6 @@
     mounted: function () {
       trains.trainsQueryWithCachedData().then(response => {
         const serverFormatConnections = response.data.train;
-        console.error('\n\n\nserverFormatConnections:', serverFormatConnections)
         let clientFormatConnections = serverFormatConnections.map(connection => {
           // let newConnection = Object.assign({}, connection);
           let newConnection = {}

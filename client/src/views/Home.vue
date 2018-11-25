@@ -31,11 +31,10 @@
       <v-btn block large @click="toggleDatePicker()">{{pickedDate}}</v-btn>
       <v-date-picker
         v-model="pickedDate"
-        :landscape="landscape"
         class="button-align"
         v-if="showDatePicker"
       ></v-date-picker>
-      <v-time-picker v-model="pickedTime" :landscape="landscape"
+      <v-time-picker v-model="pickedTime"
         v-if="showTimePicker"
         class="button-align right-margin"
       ></v-time-picker>

@@ -2,8 +2,6 @@
 
 Application helping travelers to start and experience their journeys. From buying the ticket to watching movies and ordering food on-board.
 
-[still a template - WIP]
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.

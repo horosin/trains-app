@@ -27,7 +27,7 @@
     <v-toolbar color="primary" dark fixed app>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <img src="img/logo.png" style="height:70%;" alt=""> 
-      <v-toolbar-title>Podróżuj</v-toolbar-title>
+      <v-toolbar-title>Podróżuj!</v-toolbar-title>
     </v-toolbar>
     <v-content>
       <v-container>

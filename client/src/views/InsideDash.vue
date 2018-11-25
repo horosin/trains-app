@@ -46,7 +46,7 @@
     </v-flex>
     <media v-if="current === 'media'"></media>
     <pomoc v-if="current === 'pomoc'"></pomoc>
-    <bottom-nav v-on:bottom-menu-change="menuChanged"></bottom-nav>
+    <bottom-nav :bottomNav="current" v-on:bottom-menu-change="menuChanged"></bottom-nav>
   </v-layout>
 </template>
 

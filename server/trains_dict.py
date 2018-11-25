@@ -24,8 +24,8 @@ trains = [
     {
         'id': "IC0002",
         'start': "Kraków Główny",
-        'stations': ['Częstochowa', 'Warszawa Centralna'],
-        'stop': 'Warszawa Wschodnia',
+        'stations': ['Częstochowa', 'Warszawa Zachodnia'],
+        'stop': 'Warszawa Centralna',
         'start_time': datetime.strptime('12:45', '%H:%M'),
         'stations_time': [datetime.strptime('15:20', '%H:%M'), datetime.strptime('16:50', '%H:%M')],
         'stop_time': datetime.strptime('17:00', '%H:%M'),

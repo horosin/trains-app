@@ -1,5 +1,6 @@
 <template>
   <v-layout row wrap>
+  <v-icon style="position: fixed; left: 46%; top: 100px">keyboard_arrow_right</v-icon>
   <v-flex xs6 sm6 offset-sm3>
     <p class="text-xs-center display-1">{{departureStation}}</p>
   </v-flex>

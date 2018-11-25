@@ -33,9 +33,10 @@ def get_train_query_string():
     train2 = [train for train in train1 if train['stop'] == stop_val]
 
     if start_time_val is not None:
-        train3 = [train for train in train2 if train['start_time'] == start_time_val] # TODO datetime
+        start_time_val = datetime.strptime(start_time_val, '%H:%M')
+        train3 = [train for train in train2 if train['start_time'] >= start_time_val] # TODO datetime
     elif stop_time_val is not None:
-        train3 = [train for train in train2 if train['stop_time'] == stop_time_val] # TODO datetime
+        train3 = [train for train in train2 if train['stop_time'] <= stop_time_val] # TODO datetime
     else:
         train3 = train2
 

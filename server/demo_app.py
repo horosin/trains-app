@@ -1,89 +1,12 @@
 #!flask/bin/python
-from flask import Flask, jsonify, abort
+from flask import Flask, jsonify, abort, make_response, request
 from datetime import datetime
+from trains_dict import trains
+from wars_dict import wars
+from media_dict import media
 
 app = Flask(__name__)
 
-trains = [
-    {
-        'id': "IC0001",
-        'start': "Kraków Główny",
-        'stations': ['Częstochowa', 'Koluszki', 'Skierniewice'],
-        'stop': 'Warszawa Centralna',
-        'start_time': '10/30',
-        'stations_time': ['12/15', '12/45', '13/20'],
-        'stop_time': '13/45',
-        'date': '21/11/2018',
-        'is_disabled': True,
-        'is_children': True,
-        'is_quiet': False,
-        'is_sleeping': False,
-        'is_wars': False
-
-    },
-    {
-        'id': "IC0002",
-        'start': "Kraków Główny",
-        'stations': ['Częstochowa', 'Warszawa Centralna'],
-        'stop': 'Warszawa Wschodnia',
-        'start_time': '12/45',
-        'stations_time': ['15/20', '16/50'],
-        'stop_time': '17/00',
-        'date': '21/11/2018',
-        'is_disabled': True,
-        'is_children': True,
-        'is_quiet': True,
-        'is_sleeping': False,
-        'is_wars': True
-
-    },
-    {
-        'id': "IC0003",
-        'start': "Kraków Główny",
-        'stations': ['Warszawa Centralna'],
-        'stop': 'Gdańsk Główny',
-        'start_time': '11/10',
-        'stations_time': ['13/55'],
-        'stop_time': '18/20',
-        'date': '21/11/2018',
-        'is_disabled': True,
-        'is_children': True,
-        'is_quiet': True,
-        'is_sleeping': True,
-        'is_wars': True
-    },
-    {
-        'id': "IC0004",
-        'start': "Warszawa Centralna",
-        'stations': ['Warszawa Wschodnia', 'Toruń Główny'],
-        'stop': 'Gdańsk Główny',
-        'start_time': '14/30',
-        'stations_time': ['14/40', '17/45'],
-        'stop_time': '18/45',
-        'date': '21/11/2018',
-        'is_disabled': True,
-        'is_children': False,
-        'is_quiet': False,
-        'is_sleeping': True,
-        'is_wars': True
-    },
-    {
-        'id': "IC0005",
-        'start': "Kraków Główny",
-        'stations': ['Częstochowa', 'Koluszki', 'Skierniewice',
-                     'Warszawa Centralna', 'Warszawa Wschodnia', 'Toruń Główny'],
-        'stop': 'Gdańsk Główny',
-        'start_time': '09/45',
-        'stations_time': ['10/20', '11/45', '12/10', '14/50', '17/20', '18/45'],
-        'stop_time': '19/55',
-        'date': '21/11/2018',
-        'is_disabled': True,
-        'is_children': False,
-        'is_quiet': True,
-        'is_sleeping': True,
-        'is_wars': True
-    }
-]
 
 @app.route('/trains-app/api/v1.0/trains', methods=['GET'])
 def get_all_trains():
@@ -96,7 +19,56 @@ def get_train(train_id):
         abort(404)
     return(jsonify({'train': train[0]}))
 
+@app.route('/trains-app/api/v1.0/trains_query', methods=['GET'])
+def get_train_query_string():
+    start_val = request.args.get('start')
+    stop_val = request.args.get('stop')
+    start_time_val = request.args.get('start_time')
+    stop_time_val = request.args.get('stop_time')
+    disabled_val = request.args.get('is_disabled')
+    sleeping_val = request.args.get('is_sleeping')
+    wars_val = request.args.get('is_wars')
+
+    train1 = [train for train in trains if train['start'] == start_val]
+    train2 = [train for train in train1 if train['stop'] == stop_val]
+
+    if start_time_val is not None:
+        start_time_val = datetime.strptime(start_time_val, '%H:%M')
+        train3 = [train for train in train2 if train['start_time'] >= start_time_val] # TODO datetime
+    elif stop_time_val is not None:
+        train3 = [train for train in train2 if train['stop_time'] <= stop_time_val] # TODO datetime
+    else:
+        train3 = train2
+
+    if disabled_val:
+        train4 = [train for train in train3 if train['is_disabled']]
+    else:
+        train4 = train3
+
+    if sleeping_val:
+        train5 = [train for train in train4 if train['is_sleeping']]
+    else:
+        train5 = train4
+
+    if wars_val:
+        train6 = [train for train in train5 if train['is_wars']]
+    else:
+        train6 = train5
+
+
+    return(jsonify({'train': train6}))
+
+@app.errorhandler(404)
+def not_found(error):
+    return make_response(jsonify({'error': 'Not found'}), 404)
+
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+# scrap youtube videos
+# cors (enable communication)
+# datetime!!!!
+# wyszukiwanie stacji koncowej w stacjach posrednich

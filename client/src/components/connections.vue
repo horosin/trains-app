@@ -59,7 +59,7 @@
       </v-expansion-panel-content>
     </v-expansion-panel>
   </v-flex>
-  </v-layout row wrap>
+  </v-layout>
 
 </template>
 

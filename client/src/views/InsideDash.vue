@@ -3,11 +3,27 @@
     <v-flex xs12>
       <v-subheader>Godzina przyjazdu</v-subheader>
       <v-card>
-        <v-card-title primary-title>
+        <v-img
+          class="white--text"
+          height="150px"
+          src="img/warszawa.jpg"
+        >
+          <v-container fill-height fluid>
+            <v-layout fill-height>
+              <v-flex xs12 align-end flexbox>
+                <span class="headline">
+                  <div style="width:100%;" class="display-3">18:05</div>
+                  <span>Warszawa Centralna</span>
+                </span>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-img>
+        <!-- <v-card-title primary-title>
           <div style="width: 100%">
             <span class="display-3">18:05</span>
           </div>
-        </v-card-title>
+        </v-card-title> -->
         <v-card-actions>
           <div><strong>5:00</strong> minut opóźnienia.</div>
           <v-spacer></v-spacer>
